@@ -4,7 +4,7 @@ use std::sync::mpsc::{self, Receiver};
 use std::thread;
 use std::time::Duration;
 
-use libppm::{App as Package, InstallOutcome, PackageManager};
+use libpm::{App as Package, InstallOutcome, PackageManager};
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 use ratatui::{prelude::*, widgets::*, DefaultTerminal};
 
@@ -192,13 +192,13 @@ impl Model {
 fn main() -> Result<(), Box<dyn Error>> {
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     if args == ["-u"] {
-        if libppm::update()? {
+        if libpm::update()? {
             std::process::exit(2);
         }
         return Ok(());
     }
     if args == ["-a"] {
-        println!("{}", libppm::updates_available()?);
+        println!("{}", libpm::updates_available()?);
         return Ok(());
     }
 

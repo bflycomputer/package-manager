@@ -4,7 +4,7 @@
   "private": true,
   "title": "pm",
   "hideExtensionName": true,
-  "description": "Search and install apps with libppm.",
+  "description": "Search and install apps with libpm.",
   "author": "bflycomputer",
   "license": "BSD-3-Clause",
   "icon": "install.svg",

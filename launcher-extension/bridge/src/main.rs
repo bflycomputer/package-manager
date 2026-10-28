@@ -1,7 +1,7 @@
 use std::io::{self, BufRead, Write};
 
 use anyhow::{bail, Context, Result};
-use libppm::PackageManager;
+use libpm::PackageManager;
 use serde_json::json;
 
 fn search() -> Result<()> {

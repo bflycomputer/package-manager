@@ -6,7 +6,7 @@ publish = false
 
 [dependencies]
 anyhow = "1"
-libppm = { path = "../../libppm" }
+libpm = { path = "../../libpm" }
 serde_json = "1"
 
 [dev-dependencies]

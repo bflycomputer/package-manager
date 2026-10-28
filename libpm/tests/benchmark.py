@@ -310,7 +310,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--index-binary",
         type=Path,
-        default=RUNTIME / "target-stripped/release/libppm-search-verifier",
+        default=RUNTIME / "target-stripped/release/libpm-search-verifier",
         help="test-only binary that builds an index and runs Test 1 batches",
     )
     parser.add_argument(
@@ -329,7 +329,7 @@ def main() -> None:
             raise SystemExit(f"required test binary is missing: {binary}")
 
     started = time.perf_counter()
-    with tempfile.TemporaryDirectory(prefix="libppm-search-tests-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="libpm-search-tests-") as temporary:
         workspace = Path(temporary)
         run_test_1(args.index_binary, workspace)
         run_test_2(args.index_binary, args.benchmark_binary, workspace)

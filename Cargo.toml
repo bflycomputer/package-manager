@@ -1,7 +1,7 @@
 [workspace]
 members = [
-    "libppm",
-    "libppm/crates/*",
+    "libpm",
+    "libpm/crates/*",
     "pm",
     "launcher-extension/bridge",
 ]

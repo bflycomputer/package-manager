@@ -25,4 +25,4 @@ cpSync("assets", "dist/assets", { recursive: true });
 cpSync(artifact.executable, "dist/bin/pm-extension-bridge");
 cpSync("package.json", "dist/package.json");
 cpSync("../LICENSE", "dist/LICENSE");
-cpSync("../libppm/LICENSES", "dist/LICENSES", { recursive: true });
+cpSync("../libpm/LICENSES", "dist/LICENSES", { recursive: true });

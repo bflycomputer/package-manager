@@ -1,4 +1,4 @@
-use libppm::PackageManager;
+use libpm::PackageManager;
 
 #[test]
 fn install_rejects_an_unknown_app_id() {
