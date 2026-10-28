@@ -4,9 +4,10 @@ import { join } from "node:path";
 import { createInterface } from "node:readline";
 import { useEffect, useRef, useState } from "react";
 
-type App = { id: number; name: string };
+type App = { id: number; name: string; icon: string | null };
 type Status = "Installing" | "Installed ✓" | "Failed";
 const bridgePath = join(__dirname, "bin", "pm-extension-bridge");
+const noIcon = join(__dirname, "assets", "no-icon.webp");
 
 export default function InstallApps() {
   const [query, setQuery] = useState("");
@@ -101,6 +102,7 @@ export default function InstallApps() {
           key={app.id}
           id={String(app.id)}
           title={app.name}
+          icon={app.icon ? { source: app.icon, fallback: noIcon } : noIcon}
           accessories={[{ text: statuses[app.id] ?? "Install" }]}
           actions={
             <ActionPanel>

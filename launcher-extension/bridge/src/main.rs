@@ -11,7 +11,13 @@ fn search() -> Result<()> {
     for line in io::stdin().lock().lines() {
         let query: String = serde_json::from_str(&line?)?;
         let response = match manager.search(&query, 50) {
-            Ok(apps) => json!({ "query": query, "apps": apps }),
+            Ok(apps) => json!({
+                "query": query,
+                "apps": apps
+                    .iter()
+                    .map(|app| json!({ "id": app.id, "name": app.name, "icon": app.icon_path() }))
+                    .collect::<Vec<_>>(),
+            }),
             Err(error) => {
                 eprintln!("{error:#}");
                 json!({ "query": query, "error": true })
