@@ -8,6 +8,7 @@ use crate::{App, InstallOutcome};
 #[derive(Clone)]
 pub(crate) struct InstallStatus {
     name: String,
+    icon: String,
     percent: Rc<Cell<i32>>,
 }
 
@@ -15,6 +16,7 @@ impl InstallStatus {
     pub(crate) fn start(app: &App) -> Self {
         let status = Self {
             name: app.name.clone(),
+            icon: app.icon_path().unwrap_or_default(),
             percent: Rc::new(Cell::new(-1)),
         };
         status.send("installing", "");
@@ -53,6 +55,7 @@ impl InstallStatus {
                 status,
                 &self.percent.get().to_string(),
                 message,
+                &self.icon,
             ])
             .stdin(Stdio::null())
             .stdout(Stdio::null())
