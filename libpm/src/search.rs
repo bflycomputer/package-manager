@@ -43,7 +43,7 @@ impl Search {
         })
     }
 
-    pub(crate) fn query(&self, query: &str, limit: usize) -> Result<Vec<App>> {
+    pub(crate) fn query(&self, query: &str, limit: usize) -> Result<Vec<u64>> {
         let transaction = self.index.read_txn()?;
         let fields = self.index.fields_ids_map(&transaction)?;
         let progress = Progress::default();
@@ -57,15 +57,7 @@ impl Search {
 
         documents
             .into_iter()
-            .map(|(_, document)| {
-                Ok(App {
-                    id: field(document, &fields, "id")?,
-                    name: field(document, &fields, "name")?,
-                    description: field(document, &fields, "description")?,
-                    package_source: field(document, &fields, "package_source")?,
-                    traffic: field(document, &fields, "traffic")?,
-                })
-            })
+            .map(|(_, document)| field(document, &fields, "id"))
             .collect()
     }
 }
@@ -87,7 +79,13 @@ fn configure(index: &Index) -> Result<()> {
 fn write_documents(apps: &[App]) -> Result<File> {
     let mut documents = tempfile()?;
     for app in apps {
-        serde_json::to_writer(&mut documents, app)?;
+        serde_json::to_writer(
+            &mut documents,
+            &App {
+                icon: None,
+                ..app.clone()
+            },
+        )?;
         documents.write_all(b"\n")?;
     }
     Ok(documents)

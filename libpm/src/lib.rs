@@ -14,6 +14,11 @@ pub use update::{update, updates_available};
 
 const CATALOG: &[u8] = include_bytes!("../../catalog.json");
 
+pub const ICON_DIR: &str = match option_env!("POND_PM_ICON_DIR") {
+    Some(dir) => dir,
+    None => "/usr/share/pond-pm/icons",
+};
+
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct App {
     pub id: u64,
@@ -21,6 +26,14 @@ pub struct App {
     pub description: String,
     pub package_source: PackageSource,
     pub traffic: u64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub icon: Option<String>,
+}
+
+impl App {
+    pub fn icon_path(&self) -> Option<String> {
+        self.icon.as_ref().map(|hash| format!("{ICON_DIR}/{hash}.webp"))
+    }
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -49,7 +62,11 @@ impl PackageManager {
     }
 
     pub fn search(&self, query: &str, limit: usize) -> Result<Vec<App>> {
-        self.search.query(query, limit)
+        let ids = self.search.query(query, limit)?;
+        Ok(ids
+            .iter()
+            .filter_map(|id| self.apps.iter().find(|app| app.id == *id).cloned())
+            .collect())
     }
 
     pub fn install(&self, app_id: u64) -> Result<InstallOutcome> {
