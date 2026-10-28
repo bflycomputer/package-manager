@@ -40,16 +40,6 @@
     "traffic": 300
   },
   {
-    "id": 5,
-    "name": "Blackboard Sync",
-    "description": "Automatic Syncing Of Your Blackboard Content",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "app.bbsync.BlackboardSync"
-    },
-    "traffic": 60
-  },
-  {
     "id": 6,
     "name": "BlueBubbles",
     "description": "BlueBubbles client for Linux",
@@ -398,16 +388,6 @@
       "package": "app.organicmaps.desktop"
     },
     "traffic": 4250
-  },
-  {
-    "id": 41,
-    "name": "PianoCheetah",
-    "description": "a better way to play it",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "app.pianocheetah.pianocheetah"
-    },
-    "traffic": 158
   },
   {
     "id": 42,
@@ -1360,16 +1340,6 @@
     "traffic": 612
   },
   {
-    "id": 137,
-    "name": "Telyn",
-    "description": "Visual editor for parametric sewing patterns",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "co.luoja.Telyn"
-    },
-    "traffic": 39
-  },
-  {
     "id": 138,
     "name": "Events",
     "description": "Manage your schedule",
@@ -1980,16 +1950,6 @@
     "traffic": 3999
   },
   {
-    "id": 199,
-    "name": "Password Calculator",
-    "description": "Calculate strong passwords for each alias from your single secret",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.bixense.PasswordCalculator"
-    },
-    "traffic": 63
-  },
-  {
     "id": 200,
     "name": "Simple Diary",
     "description": "Simple and lightweight diary app",
@@ -2028,16 +1988,6 @@
       "package": "com.blitterstudio.amiberry"
     },
     "traffic": 1171
-  },
-  {
-    "id": 204,
-    "name": "QBZ",
-    "description": "Hi-fi music player for Qobuz",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.blitzfc.qbz"
-    },
-    "traffic": 2174
   },
   {
     "id": 205,
@@ -2510,16 +2460,6 @@
     "traffic": 3759
   },
   {
-    "id": 252,
-    "name": "Fruit Credits",
-    "description": "Keep plaintext accounts",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.dz4k.FruitCredits"
-    },
-    "traffic": 64
-  },
-  {
     "id": 253,
     "name": "EasyEDA Pro",
     "description": "Online PCB design tool",
@@ -2578,16 +2518,6 @@
       "package": "com.endlessnetwork.MidnightmareTeddy"
     },
     "traffic": 225
-  },
-  {
-    "id": 259,
-    "name": "Aqueducts",
-    "description": "Hack your way to saving the day",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.endlessnetwork.aqueducts"
-    },
-    "traffic": 795
   },
   {
     "id": 260,
@@ -2848,16 +2778,6 @@
       "package": "com.fogpanther.FogPanther"
     },
     "traffic": 1871
-  },
-  {
-    "id": 286,
-    "name": "Teleport",
-    "description": "Share files over the local network",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.frac_tion.teleport"
-    },
-    "traffic": 101
   },
   {
     "id": 287,
@@ -3290,16 +3210,6 @@
     "traffic": 209
   },
   {
-    "id": 330,
-    "name": "Bookworm",
-    "description": "A focused eBook reader",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.github.babluboy.bookworm"
-    },
-    "traffic": 710
-  },
-  {
     "id": 331,
     "name": "VServer",
     "description": "Access your files from any device on the same network",
@@ -3370,16 +3280,6 @@
     "traffic": 45
   },
   {
-    "id": 338,
-    "name": "Xilinx Vivado Design Suite",
-    "description": "Xilinx Design Suite for hardware development",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.github.corna.Vivado"
-    },
-    "traffic": 136
-  },
-  {
     "id": 339,
     "name": "Cubiomes Viewer",
     "description": "Minecraft seed finder and map viewer",
@@ -3418,16 +3318,6 @@
       "package": "com.github.dail8859.NotepadNext"
     },
     "traffic": 6440
-  },
-  {
-    "id": 343,
-    "name": "Cow's Revenge",
-    "description": "Indie Platformer Pixel Art Game",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.github.dariasteam.cowsrevenge"
-    },
-    "traffic": 174
   },
   {
     "id": 344,
@@ -3790,16 +3680,6 @@
     "traffic": 2921
   },
   {
-    "id": 380,
-    "name": "PDF Slicer",
-    "description": "A simple tool to extract, merge, rotate and reorder pages of PDF documents",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.github.junrrein.PDFSlicer"
-    },
-    "traffic": 945
-  },
-  {
     "id": 381,
     "name": "Dust Racing 2D",
     "description": "Traditional top-down car racing game including a level editor",
@@ -4068,16 +3948,6 @@
       "package": "com.github.paolostivanin.OTPClient"
     },
     "traffic": 590
-  },
-  {
-    "id": 408,
-    "name": "YAFC",
-    "description": "YAFC is a Factorio calculator, planner and analyser. The main goal of YAFC is to cope with heavily modded games.",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.github.petebuffon.yafc"
-    },
-    "traffic": 49
   },
   {
     "id": 409,
@@ -4430,16 +4300,6 @@
     "traffic": 189
   },
   {
-    "id": 444,
-    "name": "Photocrea",
-    "description": "Advanced image editor",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.github.vikdevelop.photopea_app"
-    },
-    "traffic": 2477
-  },
-  {
     "id": 445,
     "name": "Timer",
     "description": "Simple countdown timer",
@@ -4530,16 +4390,6 @@
     "traffic": 202
   },
   {
-    "id": 454,
-    "name": "Trilium Notes",
-    "description": "Build your personal knowledge base",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.github.zadam.trilium"
-    },
-    "traffic": 908
-  },
-  {
     "id": 455,
     "name": "SyncThingy",
     "description": "SyncThingy = Syncthing + simple tray indicator",
@@ -4568,16 +4418,6 @@
       "package": "com.gitlab.ColinDuquesnoy.MellowPlayer"
     },
     "traffic": 191
-  },
-  {
-    "id": 458,
-    "name": "Invoicer",
-    "description": "Create your payment invoices",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.gitlab.adnan338.Invoicer"
-    },
-    "traffic": 55
   },
   {
     "id": 459,
@@ -5160,16 +5000,6 @@
     "traffic": 6396
   },
   {
-    "id": 517,
-    "name": "Nutstore",
-    "description": "A cloud storage service",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.jianguoyun.Nutstore"
-    },
-    "traffic": 69
-  },
-  {
     "id": 518,
     "name": "JioSphere",
     "description": "JioSphere – Redefining Desktop Browsing",
@@ -5388,16 +5218,6 @@
       "package": "com.ktechpit.torrhunt"
     },
     "traffic": 2183
-  },
-  {
-    "id": 540,
-    "name": "TypingMaster",
-    "description": "Adaptive touch-typing trainer",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.ktechpit.typingmaster"
-    },
-    "traffic": 893
   },
   {
     "id": 541,
@@ -6660,16 +6480,6 @@
     "traffic": 1781
   },
   {
-    "id": 667,
-    "name": "SaunaSim",
-    "description": "ATC Training Simulator",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.saunasim.saunasim"
-    },
-    "traffic": 124
-  },
-  {
     "id": 668,
     "name": "Sayonara",
     "description": "A fast and powerful audio player and library manager",
@@ -6960,16 +6770,6 @@
     "traffic": 128476
   },
   {
-    "id": 697,
-    "name": "Springlobby",
-    "description": "Play online RTS games with the Spring engine",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.springrts.SpringLobby"
-    },
-    "traffic": 57
-  },
-  {
     "id": 698,
     "name": "STM32CubeMX",
     "description": "A graphical tool for configuring STM32 microcontrollers and microprocessors",
@@ -6998,16 +6798,6 @@
       "package": "com.steamgriddb.steam-rom-manager"
     },
     "traffic": 2876
-  },
-  {
-    "id": 701,
-    "name": "StepMania",
-    "description": "Rhythm and dance game",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.stepmania.StepMania"
-    },
-    "traffic": 424
   },
   {
     "id": 702,
@@ -7378,16 +7168,6 @@
       "package": "com.transmissionbt.Transmission"
     },
     "traffic": 7627
-  },
-  {
-    "id": 739,
-    "name": "Treemly",
-    "description": "Automated Document Processing for Accounting Services",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "com.treemly.treemly"
-    },
-    "traffic": 38
   },
   {
     "id": 740,
@@ -8518,16 +8298,6 @@
       "package": "de.informationsanarchistik.teapot.megamichi.duckrun"
     },
     "traffic": 235
-  },
-  {
-    "id": 853,
-    "name": "Televido",
-    "description": "Access German-language public TV",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "de.k_bo.Televido"
-    },
-    "traffic": 818
   },
   {
     "id": 854,
@@ -10020,16 +9790,6 @@
     "traffic": 82
   },
   {
-    "id": 1003,
-    "name": "Digital Assets",
-    "description": "Cryptocurrencies prices and statistics",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "fr.fgrabenstaetter.DigitalAssets"
-    },
-    "traffic": 76
-  },
-  {
     "id": 1004,
     "name": "HomeBank",
     "description": "Personal accounting for everyone",
@@ -10098,16 +9858,6 @@
       "package": "fr.masson_informatique.WhosWho"
     },
     "traffic": 103
-  },
-  {
-    "id": 1011,
-    "name": "Recube Launcher",
-    "description": "Unofficial Launcher for NationsGlory",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "fr.nationsglory.launcher"
-    },
-    "traffic": 87
   },
   {
     "id": 1012,
@@ -10970,16 +10720,6 @@
     "traffic": 450
   },
   {
-    "id": 1098,
-    "name": "Bavarder",
-    "description": "Chit-chat with an AI",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.Bavarder.Bavarder"
-    },
-    "traffic": 463
-  },
-  {
     "id": 1099,
     "name": "CircuitSim",
     "description": "Design and simulate circuits",
@@ -11258,16 +10998,6 @@
       "package": "io.github.KangLin.SerialPortAssistant"
     },
     "traffic": 565
-  },
-  {
-    "id": 1127,
-    "name": "KikoPlay",
-    "description": "Full-Featured Danmu Player",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.KikoPlayProject.KikoPlay"
-    },
-    "traffic": 74
   },
   {
     "id": 1128,
@@ -11860,16 +11590,6 @@
     "traffic": 1107
   },
   {
-    "id": 1187,
-    "name": "XCA AI Chat",
-    "description": "Chat with AI - Powered by ChatGPT API",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.alfianlosari.GTKChatGPT"
-    },
-    "traffic": 877
-  },
-  {
     "id": 1188,
     "name": "CrossMacro",
     "description": "Mouse and keyboard automation",
@@ -11938,16 +11658,6 @@
       "package": "io.github.andreibachim.shortcut"
     },
     "traffic": 694
-  },
-  {
-    "id": 1195,
-    "name": "Android Virtual Pen",
-    "description": "Capture android pen input on Linux",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.androidvirtualpen.virtualpen"
-    },
-    "traffic": 443
   },
   {
     "id": 1196,
@@ -12378,16 +12088,6 @@
       "package": "io.github.ciromattia.kcc"
     },
     "traffic": 836
-  },
-  {
-    "id": 1239,
-    "name": "Escambo",
-    "description": "Test and develop APIs",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.cleomenezesjr.Escambo"
-    },
-    "traffic": 102
   },
   {
     "id": 1240,
@@ -12980,52 +12680,12 @@
     "traffic": 1745
   },
   {
-    "id": 1299,
-    "name": "Cherrypick",
-    "description": "Pick colors on your screen",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.ellie_commons.cherrypick"
-    },
-    "traffic": 489
-  },
-  {
-    "id": 1300,
-    "name": "Jorts",
-    "description": "Write on colourful little squares",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.ellie_commons.jorts"
-    },
-    "traffic": 583
-  },
-  {
-    "id": 1301,
-    "name": "Reminduck",
-    "description": "Remember your stuff in an adorably annoying way",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.ellie_commons.reminduck"
-    },
-    "traffic": 254
-  },
-  {
     "id": 1302,
     "name": "Sequeler",
     "description": "Friendly SQL Client",
     "package_source": {
       "manager": "flatpak",
       "package": "io.github.ellie_commons.sequeler"
-    },
-    "traffic": 309
-  },
-  {
-    "id": 1303,
-    "name": "Inscriptions",
-    "description": "Translate text elegantly",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.elly_code.inscriptions"
     },
     "traffic": 309
   },
@@ -14070,16 +13730,6 @@
     "traffic": 111
   },
   {
-    "id": 1408,
-    "name": "Linux-Assistant",
-    "description": "A daily linux helper with powerful integrated search, routines and checks",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.jean28518.Linux-Assistant"
-    },
-    "traffic": 998
-  },
-  {
     "id": 1409,
     "name": "Hidamari",
     "description": "Video wallpaper for Linux",
@@ -14460,66 +14110,6 @@
     "traffic": 532
   },
   {
-    "id": 1447,
-    "name": "Colorway",
-    "description": "Generate color pairings",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.lainsce.Colorway"
-    },
-    "traffic": 239
-  },
-  {
-    "id": 1448,
-    "name": "Countdown",
-    "description": "Track events until they happen or since they happened",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.lainsce.Countdown"
-    },
-    "traffic": 291
-  },
-  {
-    "id": 1449,
-    "name": "Dot Matrix",
-    "description": "The creativity playground of lines and curves",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.lainsce.DotMatrix"
-    },
-    "traffic": 272
-  },
-  {
-    "id": 1450,
-    "name": "Emulsion",
-    "description": "Stock up on colors",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.lainsce.Emulsion"
-    },
-    "traffic": 272
-  },
-  {
-    "id": 1451,
-    "name": "Khronos",
-    "description": "Log the time it took to do tasks",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.lainsce.Khronos"
-    },
-    "traffic": 298
-  },
-  {
-    "id": 1452,
-    "name": "Notejot",
-    "description": "Jot your ideas",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.lainsce.Notejot"
-    },
-    "traffic": 884
-  },
-  {
     "id": 1453,
     "name": "Tower Oops!",
     "description": "A modern GTK4 port of the classic \"Crazy Towers\" puzzle game.",
@@ -14598,16 +14188,6 @@
       "package": "io.github.libvibrant.vibrantLinux"
     },
     "traffic": 1890
-  },
-  {
-    "id": 1461,
-    "name": "Queries",
-    "description": "A workbench to interact with relational databases",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.limads.Queries"
-    },
-    "traffic": 94
   },
   {
     "id": 1462,
@@ -14940,16 +14520,6 @@
     "traffic": 774
   },
   {
-    "id": 1495,
-    "name": "vengi VoxEdit",
-    "description": "voxel editor",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.mgerhardy.vengi.voxedit"
-    },
-    "traffic": 127
-  },
-  {
     "id": 1496,
     "name": "Media Downloader",
     "description": "A GUI to yt-dlp, gallery-dl and others",
@@ -14978,16 +14548,6 @@
       "package": "io.github.microgamercz.piki"
     },
     "traffic": 161
-  },
-  {
-    "id": 1499,
-    "name": "Digitales Register",
-    "description": "Inoffizieller Client für das Digitale Register",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.mideb.digitales_register"
-    },
-    "traffic": 25
   },
   {
     "id": 1500,
@@ -15358,16 +14918,6 @@
       "package": "io.github.narunlifescience.AlphaPlot"
     },
     "traffic": 137
-  },
-  {
-    "id": 1537,
-    "name": "Chromatic",
-    "description": "Fine-tune your instruments",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.nate_xyz.Chromatic"
-    },
-    "traffic": 255
   },
   {
     "id": 1538,
@@ -15870,16 +15420,6 @@
     "traffic": 30
   },
   {
-    "id": 1588,
-    "name": "tarug",
-    "description": "A minimal Postgres SQL client",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.ppvan.tarug"
-    },
-    "traffic": 109
-  },
-  {
     "id": 1589,
     "name": "Project: Starfighter",
     "description": "Space shoot 'em up game.",
@@ -16268,16 +15808,6 @@
       "package": "io.github.roseblume.rosary"
     },
     "traffic": 171
-  },
-  {
-    "id": 1628,
-    "name": "Rosary Music",
-    "description": "Listen To Online Radio",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.roseblume.rosemusic"
-    },
-    "traffic": 180
   },
   {
     "id": 1629,
@@ -16738,16 +16268,6 @@
       "package": "io.github.sniper1720.khushu"
     },
     "traffic": 337
-  },
-  {
-    "id": 1675,
-    "name": "godl",
-    "description": "Godot version manager",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.sockeye_d.godl"
-    },
-    "traffic": 133
   },
   {
     "id": 1676,
@@ -17370,16 +16890,6 @@
     "traffic": 603
   },
   {
-    "id": 1738,
-    "name": "Emoji Mart",
-    "description": "A modern popup emoji picker",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.vemonet.EmojiMart"
-    },
-    "traffic": 524
-  },
-  {
     "id": 1739,
     "name": "Veusz",
     "description": "Scientific plotting package",
@@ -17690,26 +17200,6 @@
     "traffic": 47
   },
   {
-    "id": 1770,
-    "name": "Retro Sprite",
-    "description": "Pixel Editor for Retro Consoles",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.xverizex.RetroSpriteEditor"
-    },
-    "traffic": 70
-  },
-  {
-    "id": 1771,
-    "name": "Nem Desktop",
-    "description": "Chat with friends.",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.github.xverizex.nem_desktop"
-    },
-    "traffic": 16
-  },
-  {
     "id": 1772,
     "name": "ZSNES",
     "description": "Super Nintendo emulator",
@@ -17970,16 +17460,6 @@
     "traffic": 120
   },
   {
-    "id": 1798,
-    "name": "libretile",
-    "description": "a opensource tile game engine thingy",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.gitlab.celleron56.libretile"
-    },
-    "traffic": 32
-  },
-  {
     "id": 1799,
     "name": "crqt-ng",
     "description": "Cross platform open source e-book reader",
@@ -18180,16 +17660,6 @@
     "traffic": 758
   },
   {
-    "id": 1819,
-    "name": "Draft",
-    "description": "Jot down notes and snippets",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.gitlab.luiggircardoso.Draft"
-    },
-    "traffic": 259
-  },
-  {
     "id": 1820,
     "name": "Metadata Cleaner",
     "description": "View and clean metadata in files",
@@ -18208,16 +17678,6 @@
       "package": "io.gitlab.news_flash.NewsFlash"
     },
     "traffic": 5348
-  },
-  {
-    "id": 1822,
-    "name": "Lugaru HD",
-    "description": "Third person ninja rabbit fighting game",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "io.gitlab.osslugaru.Lugaru"
-    },
-    "traffic": 299
   },
   {
     "id": 1823,
@@ -19428,16 +18888,6 @@
       "package": "me.kozec.syncthingtk"
     },
     "traffic": 2520
-  },
-  {
-    "id": 1944,
-    "name": "Grock",
-    "description": "Displays geological maps of the UK.",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "me.leucoso.Grock"
-    },
-    "traffic": 77
   },
   {
     "id": 1945,
@@ -22160,16 +21610,6 @@
     "traffic": 1858
   },
   {
-    "id": 2217,
-    "name": "Sync Passwd",
-    "description": "Update passwords",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.adishatz.syncpasswd"
-    },
-    "traffic": 41
-  },
-  {
     "id": 2218,
     "name": "Aegisub",
     "description": "Create and modify subtitles",
@@ -23740,16 +23180,6 @@
     "traffic": 812
   },
   {
-    "id": 2375,
-    "name": "Feeds",
-    "description": "News reader for GNOME",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.gabmus.gfeeds"
-    },
-    "traffic": 1324
-  },
-  {
     "id": 2376,
     "name": "HydraPaper",
     "description": "Wallpaper manager with multi monitor support",
@@ -25178,16 +24608,6 @@
       "package": "org.groestlcoin.groestlcoin-qt"
     },
     "traffic": 26
-  },
-  {
-    "id": 2519,
-    "name": "Al Quran (Tafsir & By Word)",
-    "description": "Study the Quran through Word by Word Analysis, Colored Tajweed, Tafsir & Audio",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.gtaf.quran"
-    },
-    "traffic": 592
   },
   {
     "id": 2520,
@@ -26950,16 +26370,6 @@
     "traffic": 373
   },
   {
-    "id": 2696,
-    "name": "Pick",
-    "description": "A colour picker",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.kryogenix.Pick"
-    },
-    "traffic": 299
-  },
-  {
     "id": 2697,
     "name": "hushboard",
     "description": "Mute your mic while you’re typing",
@@ -26968,16 +26378,6 @@
       "package": "org.kryogenix.hushboard"
     },
     "traffic": 54
-  },
-  {
-    "id": 2698,
-    "name": "utm_no",
-    "description": "Remove tracking parameters from copied URLs",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.kryogenix.utm_no"
-    },
-    "traffic": 67
   },
   {
     "id": 2699,
@@ -26998,16 +26398,6 @@
       "package": "org.lamport.tla.toolbox"
     },
     "traffic": 78
-  },
-  {
-    "id": 2701,
-    "name": "TurtleBlocks",
-    "description": "A Logo-inspired turtle that draws colorful pictures with snap-together visual programming blocks",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.laptop.TurtleArtActivity"
-    },
-    "traffic": 145
   },
   {
     "id": 2702,
@@ -27270,16 +26660,6 @@
     "traffic": 800
   },
   {
-    "id": 2728,
-    "name": "Scoreboard",
-    "description": "A simple scoreboard to count points for any game",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.metal3d.scoreboard"
-    },
-    "traffic": 36
-  },
-  {
     "id": 2729,
     "name": "Hurry Curry!",
     "description": "Multiplayer co-op coooking game",
@@ -27318,26 +26698,6 @@
       "package": "org.mintguide.WebAppReader"
     },
     "traffic": 146
-  },
-  {
-    "id": 2733,
-    "name": "SSH Host Editor",
-    "description": "Edit SSH hosts and aliases",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.mintguide.ssh-host-editor"
-    },
-    "traffic": 91
-  },
-  {
-    "id": 2734,
-    "name": "mMass",
-    "description": "Open Source Mass Spectrometry Tool",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.mmass.mMass"
-    },
-    "traffic": 113
   },
   {
     "id": 2735,
@@ -27478,26 +26838,6 @@
       "package": "org.neverball.Neverball"
     },
     "traffic": 484
-  },
-  {
-    "id": 2749,
-    "name": "Cavalier",
-    "description": "Visualize audio with CAVA",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.nickvision.cavalier"
-    },
-    "traffic": 1202
-  },
-  {
-    "id": 2750,
-    "name": "Denaro",
-    "description": "Manage your personal finances",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.nickvision.money"
-    },
-    "traffic": 1694
   },
   {
     "id": 2751,
@@ -28020,16 +27360,6 @@
     "traffic": 92389
   },
   {
-    "id": 2803,
-    "name": "Processing IDE",
-    "description": "Open-source software prototyping platform",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.processing.processingide"
-    },
-    "traffic": 445
-  },
-  {
     "id": 2804,
     "name": "Profex",
     "description": "Open Source XRD and Rietveld Refinement",
@@ -28528,26 +27858,6 @@
       "package": "org.skaven.ratic"
     },
     "traffic": 550
-  },
-  {
-    "id": 2854,
-    "name": "SkyTemple Randomizer",
-    "description": "Randomizer for Pokémon Mystery Dungeon Explorers of Sky",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.skytemple.Randomizer"
-    },
-    "traffic": 121
-  },
-  {
-    "id": 2855,
-    "name": "SkyTemple",
-    "description": "ROM Editor for Pokémon Mystery Dungeon Explorers of Sky",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.skytemple.SkyTemple"
-    },
-    "traffic": 160
   },
   {
     "id": 2856,
@@ -29310,16 +28620,6 @@
     "traffic": 26
   },
   {
-    "id": 2932,
-    "name": "Tryton 7.6",
-    "description": "Connect to Tryton",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.tryton.Tryton-76"
-    },
-    "traffic": 23
-  },
-  {
     "id": 2933,
     "name": "Tryton 7.8",
     "description": "Connect to Tryton",
@@ -29358,16 +28658,6 @@
       "package": "org.turbowarp.TurboWarp"
     },
     "traffic": 4592
-  },
-  {
-    "id": 2937,
-    "name": "Tuxemon",
-    "description": "Tuxemon is a free, open source monster-fighting RPG.",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.tuxemon.Tuxemon"
-    },
-    "traffic": 297
   },
   {
     "id": 2938,
@@ -29448,16 +28738,6 @@
       "package": "org.unifiedpush.Troubleshooter"
     },
     "traffic": 44
-  },
-  {
-    "id": 2946,
-    "name": "StationHub",
-    "description": "Launcher for the open-source game Unitystation",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "org.unitystation.StationHub"
-    },
-    "traffic": 52
   },
   {
     "id": 2947,
@@ -30310,16 +29590,6 @@
     "traffic": 152
   },
   {
-    "id": 3032,
-    "name": "Cartridges",
-    "description": "Launch all your games",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "page.kramo.Cartridges"
-    },
-    "traffic": 3731
-  },
-  {
     "id": 3033,
     "name": "Sly",
     "description": "Edit your images easily",
@@ -30338,16 +29608,6 @@
       "package": "page.tesk.Refine"
     },
     "traffic": 7669
-  },
-  {
-    "id": 3035,
-    "name": "Super Tux Party",
-    "description": "A party game starring FLOSS mascots",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "party.supertux.supertuxparty"
-    },
-    "traffic": 395
   },
   {
     "id": 3036,
@@ -30820,16 +30080,6 @@
     "traffic": 386
   },
   {
-    "id": 3083,
-    "name": "Devpod",
-    "description": "Codespaces but open-source, client-only and unopinionated: Works with any IDE and lets you use any cloud, kubernetes or just localhost docker.",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "sh.loft.devpod"
-    },
-    "traffic": 314
-  },
-  {
     "id": 3084,
     "name": "osu!",
     "description": "Rhythm is just a *click* away!",
@@ -31030,16 +30280,6 @@
     "traffic": 834
   },
   {
-    "id": 3104,
-    "name": "Deckr",
-    "description": "Deckr Desktop App",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "surf.deckr.deckr"
-    },
-    "traffic": 96
-  },
-  {
     "id": 3105,
     "name": "Fracture",
     "description": "Fracture windows then resize, modify, and use shaders with the fractured selection.",
@@ -31128,16 +30368,6 @@
       "package": "tf.harmony.UnCSO2"
     },
     "traffic": 113
-  },
-  {
-    "id": 3114,
-    "name": "Jazz² Resurrection",
-    "description": "A re-implementation of Jazz Jackrabbit 2",
-    "package_source": {
-      "manager": "flatpak",
-      "package": "tk.deat.Jazz2Resurrection"
-    },
-    "traffic": 474
   },
   {
     "id": 3115,
@@ -34560,16 +33790,6 @@
     "traffic": 1330
   },
   {
-    "id": 3458,
-    "name": "KGamma",
-    "description": "Adjust the gamma settings of your monitor",
-    "package_source": {
-      "manager": "pacman",
-      "package": "kgamma"
-    },
-    "traffic": 25800
-  },
-  {
     "id": 3459,
     "name": "KGet",
     "description": "Download manager",
@@ -34928,16 +34148,6 @@
       "package": "kwin"
     },
     "traffic": 42400
-  },
-  {
-    "id": 3495,
-    "name": "KWin for X11",
-    "description": "Easy to use but flexible X11 window manager",
-    "package_source": {
-      "manager": "pacman",
-      "package": "kwin-x11"
-    },
-    "traffic": 12300
   },
   {
     "id": 3496,
@@ -37998,16 +37208,6 @@
       "package": "w3m"
     },
     "traffic": 17800
-  },
-  {
-    "id": 3802,
-    "name": "Plasma Wacom tablet settings",
-    "description": "Set up button and pen layouts for Wacom graphics tablets",
-    "package_source": {
-      "manager": "pacman",
-      "package": "wacomtablet"
-    },
-    "traffic": 17500
   },
   {
     "id": 3803,
