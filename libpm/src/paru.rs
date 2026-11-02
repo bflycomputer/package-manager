@@ -1,4 +1,5 @@
 use std::{
+    env,
     fs::File,
     io::{self, Read, Write},
     path::Path,
@@ -13,9 +14,11 @@ pub(crate) fn install(package: &str, report: impl Fn(f64)) -> Result<InstallOutc
     let _lock = lock(Path::new("/var/lib/pacman"))?;
     let mut command = Command::new("paru");
     command
+        .arg("--sudo")
+        .arg(env::current_exe()?)
         .args([
-            "--sudo",
-            "pkexec",
+            "--sudoflags",
+            crate::pkexec::FLAG,
             "--nosudoloop",
             "--skipreview",
             "--pgpfetch",
@@ -50,9 +53,11 @@ pub(crate) fn lock(database: &Path) -> Result<File> {
 pub(crate) fn update() -> Result<()> {
     let _lock = lock(Path::new("/var/lib/pacman"))?;
     let status = Command::new("paru")
+        .arg("--sudo")
+        .arg(env::current_exe()?)
         .args([
-            "--sudo",
-            "pkexec",
+            "--sudoflags",
+            crate::pkexec::FLAG,
             "--nosudoloop",
             "-Syu",
             "--skipreview",

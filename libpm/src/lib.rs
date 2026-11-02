@@ -4,6 +4,7 @@ mod flatpak;
 mod install_status;
 mod nix;
 mod paru;
+pub mod pkexec;
 mod search;
 mod update;
 

@@ -32,6 +32,7 @@ fn search() -> Result<()> {
 }
 
 fn main() -> Result<()> {
+    libpm::pkexec::handle_args();
     let mut args = std::env::args().skip(1);
 
     match args.next().as_deref() {

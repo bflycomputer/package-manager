@@ -1323,6 +1323,7 @@ dependencies = [
  "libflatpak",
  "memmap2",
  "milli",
+ "rustix",
  "serde",
  "serde_json",
  "tempfile",

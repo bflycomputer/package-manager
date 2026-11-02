@@ -190,6 +190,7 @@ impl Model {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    libpm::pkexec::handle_args();
     let args = std::env::args().skip(1).collect::<Vec<_>>();
     if args == ["-u"] {
         if libpm::update()? {
