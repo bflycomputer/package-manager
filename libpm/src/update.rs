@@ -28,7 +28,10 @@ pub fn update() -> Result<bool> {
     });
 
     match (paru, flatpak) {
-        (Ok(()), Ok(())) => Ok(restart_recommended().unwrap_or(false)),
+        (Ok(()), Ok(())) => {
+            crate::nix::update_gpu().context("Nix GPU update failed")?;
+            Ok(restart_recommended().unwrap_or(false))
+        }
         (Err(error), Ok(())) => Err(error.context("Paru update failed")),
         (Ok(()), Err(error)) => Err(error.context("Flatpak update failed")),
         (Err(paru), Err(flatpak)) => {
