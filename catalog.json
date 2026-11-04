@@ -35197,7 +35197,7 @@
     "description": "Monitor and control your cooling devices",
     "package_source": {
       "manager": "pacman",
-      "package": "coolercontrold"
+      "package": "coolercontrol"
     },
     "traffic": 0,
     "icon": "d8b9d21bff2e723c"
