@@ -26,8 +26,8 @@
     "name": "OpenCode",
     "description": "Open source AI coding agent",
     "package_source": {
-      "manager": "flatpak",
-      "package": "ai.opencode.opencode"
+      "manager": "pacman",
+      "package": "opencode-desktop"
     },
     "traffic": 5712,
     "icon": "6a66ec4d33ef2eb8"
