@@ -16,6 +16,8 @@ pub(crate) fn install(package: &str, report: impl Fn(f64)) -> Result<InstallOutc
         .args([
             "--sudo",
             "pkexec",
+            "--sudoflags",
+            "pm-root",
             "--nosudoloop",
             "--skipreview",
             "--pgpfetch",
@@ -53,6 +55,8 @@ pub(crate) fn update() -> Result<()> {
         .args([
             "--sudo",
             "pkexec",
+            "--sudoflags",
+            "pm-root",
             "--nosudoloop",
             "-Syu",
             "--skipreview",

@@ -40,7 +40,7 @@ pub(crate) fn install(package: &str) -> Result<InstallOutcome> {
 pub(crate) fn update_gpu() -> Result<()> {
     let mut build = Command::new("pkexec");
     build
-        .arg("nix")
+        .args(["pm-root", "nix"])
         .arg("--extra-experimental-features")
         .arg(EXPERIMENTAL_FEATURES)
         .args(["build", "--impure", "--expr", GPU, "--out-link", GPU_LINK])

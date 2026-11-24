@@ -1,0 +1,13 @@
+polkit.addRule(function(action, subject) {
+    if (action.id != "so.butterfly.pond.install" || !subject.active || !subject.local || !subject.isInGroup("wheel")) {
+        return polkit.Result.NOT_HANDLED;
+    }
+    try {
+        if (polkit.spawn(["/usr/bin/find", "/run/pond-pm/" + subject.uid, "-mmin", "-5"])) {
+            return polkit.Result.YES;
+        }
+    } catch (error) {
+        // opens the dialog, which then creates the file
+    }
+    return polkit.Result.NOT_HANDLED;
+});

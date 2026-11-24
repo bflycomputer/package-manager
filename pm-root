@@ -1,0 +1,18 @@
+#!/bin/sh
+set -u
+umask 022
+case "$1" in
+  pacman | nix) ;;
+  *) exit 2 ;;
+esac
+# pkexec supplies the caller's UID so separate requests can share one ticket.
+ticket=/run/pond-pm/$PKEXEC_UID
+mkdir -p /run/pond-pm
+touch "$ticket"
+command=$1
+shift
+"/usr/bin/$command" "$@"
+status=$?
+# Give the caller the full window again after a long package operation.
+touch "$ticket"
+exit $status
