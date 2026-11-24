@@ -19,7 +19,7 @@ pub fn updates_available() -> Result<bool> {
 
 pub fn update() -> Result<bool> {
     let (paru, flatpak) = thread::scope(|scope| {
-        let paru = scope.spawn(crate::paru::update);
+        let paru = scope.spawn(|| crate::paru::update().and_then(|()| crate::nix::update_gpu()));
         let flatpak = crate::flatpak::update();
         let paru = paru
             .join()
