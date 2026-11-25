@@ -18,23 +18,24 @@ pub fn updates_available() -> Result<bool> {
 }
 
 pub fn update() -> Result<bool> {
-    let (paru, flatpak) = thread::scope(|scope| {
+    let (paru, flatpak, nix) = thread::scope(|scope| {
         let paru = scope.spawn(|| crate::paru::update().and_then(|()| crate::nix::update_gpu()));
         let flatpak = crate::flatpak::update();
+        let nix = crate::nix::update();
         let paru = paru
             .join()
             .unwrap_or_else(|_| Err(anyhow!("Paru update worker panicked")));
-        (paru, flatpak)
+        (paru, flatpak, nix)
     });
 
-    match (paru, flatpak) {
-        (Ok(()), Ok(())) => Ok(restart_recommended().unwrap_or(false)),
-        (Err(error), Ok(())) => Err(error.context("Paru update failed")),
-        (Ok(()), Err(error)) => Err(error.context("Flatpak update failed")),
-        (Err(paru), Err(flatpak)) => {
-            bail!("Paru update failed: {paru:#}\nFlatpak update failed: {flatpak:#}")
-        }
+    let failures: Vec<String> = [("Paru", paru), ("Flatpak", flatpak), ("Nix", nix)]
+        .into_iter()
+        .filter_map(|(source, result)| Some(format!("{source} update failed: {:#}", result.err()?)))
+        .collect();
+    if !failures.is_empty() {
+        bail!("{}", failures.join("\n"));
     }
+    Ok(restart_recommended().unwrap_or(false))
 }
 
 fn restart_recommended() -> Result<bool> {

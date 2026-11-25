@@ -37,6 +37,19 @@ pub(crate) fn install(package: &str) -> Result<InstallOutcome> {
     );
 }
 
+pub(crate) fn update() -> Result<()> {
+    let status = Command::new("nix")
+        .arg("--extra-experimental-features")
+        .arg(EXPERIMENTAL_FEATURES)
+        .args(["profile", "upgrade", "--all", "--impure"])
+        .env("NIXPKGS_ALLOW_UNFREE", "1")
+        .stdin(Stdio::null())
+        .status()
+        .context("starting Nix to upgrade packages")?;
+    ensure!(status.success(), "upgrading Nix packages failed ({status})");
+    Ok(())
+}
+
 pub(crate) fn uninstall(package: &str) -> Result<()> {
     let listing: serde_json::Value =
         serde_json::from_slice(&profile(&["list", "--json"])?).context("parsing the Nix profile")?;
