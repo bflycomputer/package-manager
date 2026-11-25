@@ -37,6 +37,42 @@ pub(crate) fn install(package: &str) -> Result<InstallOutcome> {
     );
 }
 
+pub(crate) fn uninstall(package: &str) -> Result<()> {
+    let listing: serde_json::Value =
+        serde_json::from_slice(&profile(&["list", "--json"])?).context("parsing the Nix profile")?;
+    let name = listing["elements"]
+        .as_object()
+        .into_iter()
+        .flatten()
+        .find(|(_, element)| {
+            let attribute = element["attrPath"].as_str();
+            attribute.and_then(|path| path.splitn(3, '.').nth(2)) == Some(package)
+        })
+        .map(|(name, _)| name)
+        .with_context(|| format!("{package} is not in the Nix profile"))?;
+    profile(&["remove", name])?;
+    Ok(())
+}
+
+fn profile(arguments: &[&str]) -> Result<Vec<u8>> {
+    let output = Command::new("nix")
+        .arg("--extra-experimental-features")
+        .arg(EXPERIMENTAL_FEATURES)
+        .arg("profile")
+        .args(arguments)
+        .stdin(Stdio::null())
+        .output()
+        .context("starting Nix")?;
+    ensure!(
+        output.status.success(),
+        "nix profile {} failed ({}): {}",
+        arguments.join(" "),
+        output.status,
+        String::from_utf8_lossy(&output.stderr).trim()
+    );
+    Ok(output.stdout)
+}
+
 pub(crate) fn update_gpu() -> Result<()> {
     let mut build = Command::new("pkexec");
     build

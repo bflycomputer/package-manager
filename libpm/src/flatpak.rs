@@ -3,7 +3,7 @@ use std::{
     rc::Rc,
 };
 
-use anyhow::{ensure, Context, Result};
+use anyhow::{bail, ensure, Context, Result};
 use libflatpak::prelude::*;
 
 use crate::InstallOutcome;
@@ -65,4 +65,38 @@ pub(crate) fn install(package: &str, report: impl Fn(f64) + 'static) -> Result<I
         }
         Err(error) => Err(error).with_context(|| format!("installing {reference} from {REMOTE}")),
     }
+}
+
+fn installations() -> Result<[libflatpak::Installation; 2]> {
+    let cancellable = None::<&libflatpak::gio::Cancellable>;
+    Ok([
+        libflatpak::Installation::new_system(cancellable)
+            .context("opening the system Flatpak installation")?,
+        libflatpak::Installation::new_user(cancellable)
+            .context("opening the user Flatpak installation")?,
+    ])
+}
+
+pub(crate) fn uninstall(package: &str) -> Result<()> {
+    let cancellable = None::<&libflatpak::gio::Cancellable>;
+
+    for installation in installations()? {
+        let reference = match installation.current_installed_app(package, cancellable) {
+            Ok(installed) => installed.format_ref().context("formatting the Flatpak ref")?,
+            Err(error) if error.matches(libflatpak::Error::NotInstalled) => continue,
+            Err(error) => {
+                return Err(error).with_context(|| format!("looking up installed {package}"));
+            }
+        };
+        let transaction = libflatpak::Transaction::for_installation(&installation, cancellable)
+            .context("creating a Flatpak transaction")?;
+        transaction
+            .add_uninstall(&reference)
+            .with_context(|| format!("adding {reference} to the transaction"))?;
+        return transaction
+            .run(cancellable)
+            .with_context(|| format!("uninstalling {reference}"));
+    }
+
+    bail!("{package} is not an installed Flatpak app");
 }

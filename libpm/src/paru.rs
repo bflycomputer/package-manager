@@ -43,6 +43,22 @@ pub(crate) fn install(package: &str, report: impl Fn(f64)) -> Result<InstallOutc
     bail!("installing {package} with Paru failed ({status})");
 }
 
+pub(crate) fn uninstall(package: &str) -> Result<()> {
+    let _lock = lock(Path::new("/var/lib/pacman"))?;
+    let status = Command::new("pkexec")
+        .args(["pm-root", "pacman", "-Rs", "--noconfirm", "--"])
+        .arg(package)
+        .stdin(Stdio::null())
+        .status()
+        .context("starting Pacman")?;
+
+    if status.success() {
+        return Ok(());
+    }
+
+    bail!("uninstalling {package} with Pacman failed ({status})");
+}
+
 pub(crate) fn lock(database: &Path) -> Result<File> {
     let lock = File::open(database).context("opening the Pacman database directory")?;
     lock.lock().context("waiting for another Pacman request")?;

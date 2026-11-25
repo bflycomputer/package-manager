@@ -87,3 +87,14 @@ impl PackageManager {
         result
     }
 }
+
+pub fn uninstall(source: &PackageSource) -> Result<()> {
+    match source.manager.as_str() {
+        "flatpak" => flatpak::uninstall(&source.package),
+        "nix" => nix::uninstall(&source.package),
+        "pacman" | "aur" => paru::uninstall(&source.package),
+        manager => Err(anyhow!(
+            "uninstalling with package manager {manager:?} is not supported"
+        )),
+    }
+}

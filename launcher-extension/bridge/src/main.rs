@@ -40,7 +40,12 @@ fn main() -> Result<()> {
             let id = args.next().context("missing app ID")?.parse()?;
             PackageManager::init()?.install(id)?;
         }
-        _ => bail!("usage: pm-extension-bridge search | install <app-id>"),
+        Some("uninstall") => {
+            let manager = args.next().context("missing package manager")?;
+            let package = args.next().context("missing package name")?;
+            libpm::uninstall(&libpm::PackageSource { manager, package })?;
+        }
+        _ => bail!("usage: pm-extension-bridge search | install <app-id> | uninstall <manager> <package>"),
     }
 
     Ok(())
