@@ -36,7 +36,7 @@ impl App {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct PackageSource {
     pub manager: String,
     pub package: String,
@@ -48,35 +48,31 @@ pub enum InstallOutcome {
     AlreadyInstalled,
 }
 
-pub struct PackageManager {
-    apps: Vec<App>,
+pub struct Catalog {
     search: search::Search,
 }
 
-impl PackageManager {
-    pub fn init() -> Result<Self> {
+impl Catalog {
+    pub fn load() -> Result<Self> {
         let apps: Vec<App> = serde_json::from_slice(CATALOG).context("parsing catalog.json")?;
-        let search = search::Search::build(&apps)?;
+        let search = search::Search::build(apps)?;
 
-        Ok(Self { apps, search })
+        Ok(Self { search })
     }
 
     pub fn search(&self, query: &str, limit: usize) -> Result<Vec<App>> {
-        let ids = self.search.query(query, limit)?;
-        Ok(ids
-            .iter()
-            .filter_map(|id| self.apps.iter().find(|app| app.id == *id).cloned())
-            .collect())
+        self.search.query(query, limit)
     }
 
     pub fn install(&self, app_id: u64) -> Result<InstallOutcome> {
         let app = self
-            .apps
+            .search
+            .apps()
             .iter()
             .find(|app| app.id == app_id)
             .with_context(|| format!("app {app_id} is not in the package catalog"))?;
 
-        let status = install_status::InstallStatus::start(app);
+        let status = install_status::InstallStatus::start(app, "installing", "installed");
         let result = match app.package_source.manager.as_str() {
             "flatpak" => flatpak::install(&app.package_source.package, status.progress()),
             "nix" => nix::install(&app.package_source.package),
@@ -88,13 +84,74 @@ impl PackageManager {
     }
 }
 
-pub fn uninstall(source: &PackageSource) -> Result<()> {
-    match source.manager.as_str() {
-        "flatpak" => flatpak::uninstall(&source.package),
-        "nix" => nix::uninstall(&source.package),
-        "pacman" | "aur" => paru::uninstall(&source.package),
-        manager => Err(anyhow!(
-            "uninstalling with package manager {manager:?} is not supported"
-        )),
+pub struct Installed {
+    search: search::Search,
+}
+
+impl Installed {
+    pub fn load() -> Result<Self> {
+        let catalog: Vec<App> = serde_json::from_slice(CATALOG).context("parsing catalog.json")?;
+        let apps: Vec<App> = Self::packages()?
+            .into_iter()
+            .enumerate()
+            .map(|(id, source)| {
+                let known = catalog.iter().find(|app| {
+                    let listed = &app.package_source;
+                    listed.package == source.package
+                        && listed.manager.replace("aur", "pacman") == source.manager
+                });
+                App {
+                    id: id as u64,
+                    name: known.map_or_else(|| source.package.clone(), |app| app.name.clone()),
+                    description: source.package.clone(),
+                    traffic: known.map_or(0, |app| app.traffic + 1),
+                    icon: known.and_then(|app| app.icon.clone()),
+                    package_source: source,
+                }
+            })
+            .collect();
+        let search = search::Search::build(apps)?;
+
+        Ok(Self { search })
+    }
+
+    pub fn search(&self, query: &str, limit: usize) -> Result<Vec<App>> {
+        self.search.query(query, limit)
+    }
+
+    pub fn uninstall(&self, source: &PackageSource) -> Result<()> {
+        let app = self
+            .search
+            .apps()
+            .iter()
+            .find(|app| app.package_source == *source)
+            .with_context(|| format!("{} is not installed", source.package))?;
+
+        let status = install_status::InstallStatus::start(app, "uninstalling", "uninstalled");
+        let result = match source.manager.as_str() {
+            "flatpak" => flatpak::uninstall(&source.package),
+            "nix" => nix::uninstall(&source.package),
+            "pacman" | "aur" => paru::uninstall(&source.package),
+            manager => Err(anyhow!(
+                "uninstalling with package manager {manager:?} is not supported"
+            )),
+        };
+        status.finish(&result);
+        result
+    }
+
+    fn packages() -> Result<Vec<PackageSource>> {
+        let mut packages = Vec::new();
+        for (manager, installed) in [
+            ("pacman", paru::installed()?),
+            ("flatpak", flatpak::installed()?),
+            ("nix", nix::installed()?),
+        ] {
+            packages.extend(installed.into_iter().map(|package| PackageSource {
+                manager: manager.to_owned(),
+                package,
+            }));
+        }
+        Ok(packages)
     }
 }

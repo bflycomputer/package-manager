@@ -77,6 +77,24 @@ fn installations() -> Result<[libflatpak::Installation; 2]> {
     ])
 }
 
+pub(crate) fn installed() -> Result<Vec<String>> {
+    let mut apps = Vec::new();
+
+    for installation in installations()? {
+        let installed = installation
+            .list_installed_refs_by_kind(
+                libflatpak::RefKind::App,
+                None::<&libflatpak::gio::Cancellable>,
+            )
+            .context("listing installed Flatpak apps")?;
+        apps.extend(installed.iter().filter_map(|app| app.name()).map(String::from));
+    }
+
+    apps.sort();
+    apps.dedup();
+    Ok(apps)
+}
+
 pub(crate) fn uninstall(package: &str) -> Result<()> {
     let cancellable = None::<&libflatpak::gio::Cancellable>;
 

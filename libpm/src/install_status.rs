@@ -3,23 +3,27 @@ use std::{cell::Cell, process::Command, process::Stdio, rc::Rc};
 
 use anyhow::Result;
 
-use crate::{App, InstallOutcome};
+use crate::App;
 
 #[derive(Clone)]
 pub(crate) struct InstallStatus {
     name: String,
     icon: String,
     percent: Rc<Cell<i32>>,
+    running: &'static str,
+    done: &'static str,
 }
 
 impl InstallStatus {
-    pub(crate) fn start(app: &App) -> Self {
+    pub(crate) fn start(app: &App, running: &'static str, done: &'static str) -> Self {
         let status = Self {
             name: app.name.clone(),
             icon: app.icon_path().unwrap_or_default(),
             percent: Rc::new(Cell::new(-1)),
+            running,
+            done,
         };
-        status.send("installing", "");
+        status.send(running, "");
         status
     }
 
@@ -30,17 +34,17 @@ impl InstallStatus {
                 let percent = (value.clamp(0.0, 0.99) * 100.0).round() as i32;
                 if percent > status.percent.get() {
                     status.percent.set(percent);
-                    status.send("installing", "");
+                    status.send(status.running, "");
                 }
             }
         }
     }
 
-    pub(crate) fn finish(self, result: &Result<InstallOutcome>) {
+    pub(crate) fn finish<T>(self, result: &Result<T>) {
         match result {
             Ok(_) => {
                 self.percent.set(100);
-                self.send("installed", "");
+                self.send(self.done, "");
             }
             Err(error) => self.send("failed", &format!("{error:#}")),
         }

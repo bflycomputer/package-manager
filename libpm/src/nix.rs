@@ -67,6 +67,18 @@ pub(crate) fn uninstall(package: &str) -> Result<()> {
     Ok(())
 }
 
+pub(crate) fn installed() -> Result<Vec<String>> {
+    let listing: serde_json::Value =
+        serde_json::from_slice(&profile(&["list", "--json"])?).context("parsing the Nix profile")?;
+    Ok(listing["elements"]
+        .as_object()
+        .into_iter()
+        .flatten()
+        .filter_map(|(_, element)| element["attrPath"].as_str()?.splitn(3, '.').nth(2))
+        .map(str::to_owned)
+        .collect())
+}
+
 fn profile(arguments: &[&str]) -> Result<Vec<u8>> {
     let output = Command::new("nix")
         .arg("--extra-experimental-features")

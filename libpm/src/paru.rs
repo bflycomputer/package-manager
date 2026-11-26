@@ -59,6 +59,20 @@ pub(crate) fn uninstall(package: &str) -> Result<()> {
     bail!("uninstalling {package} with Pacman failed ({status})");
 }
 
+pub(crate) fn installed() -> Result<Vec<String>> {
+    let output = Command::new("pacman")
+        .arg("-Qq")
+        .stdin(Stdio::null())
+        .output()
+        .context("starting Pacman")?;
+
+    if !output.status.success() {
+        bail!("listing packages with Pacman failed ({})", output.status);
+    }
+
+    Ok(String::from_utf8_lossy(&output.stdout).lines().map(str::to_owned).collect())
+}
+
 pub(crate) fn lock(database: &Path) -> Result<File> {
     let lock = File::open(database).context("opening the Pacman database directory")?;
     lock.lock().context("waiting for another Pacman request")?;

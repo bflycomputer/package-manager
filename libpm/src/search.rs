@@ -17,17 +17,18 @@ use crate::App;
 const MAP_SIZE: usize = 1024 * 1024 * 1024;
 
 pub(crate) struct Search {
+    apps: Vec<App>,
     index: Index,
     _index_directory: TempDir,
 }
 
 impl Search {
-    pub(crate) fn build(apps: &[App]) -> Result<Self> {
+    pub(crate) fn build(apps: Vec<App>) -> Result<Self> {
         let index_directory = tempdir()?;
         let index = Index::new(open_options(), index_directory.path())?;
 
         configure(&index)?;
-        let documents = write_documents(apps)?;
+        let documents = write_documents(&apps)?;
         index_documents(&index, &documents)?;
 
         let transaction = index.read_txn()?;
@@ -38,12 +39,17 @@ impl Search {
         drop(transaction);
 
         Ok(Self {
+            apps,
             index,
             _index_directory: index_directory,
         })
     }
 
-    pub(crate) fn query(&self, query: &str, limit: usize) -> Result<Vec<u64>> {
+    pub(crate) fn apps(&self) -> &[App] {
+        &self.apps
+    }
+
+    pub(crate) fn query(&self, query: &str, limit: usize) -> Result<Vec<App>> {
         let transaction = self.index.read_txn()?;
         let fields = self.index.fields_ids_map(&transaction)?;
         let progress = Progress::default();
@@ -55,10 +61,14 @@ impl Search {
             .index
             .documents(&transaction, matches.documents_ids.iter().copied())?;
 
-        documents
+        let ids: Vec<u64> = documents
             .into_iter()
             .map(|(_, document)| field(document, &fields, "id"))
-            .collect()
+            .collect::<Result<_>>()?;
+        Ok(ids
+            .iter()
+            .filter_map(|id| self.apps.iter().find(|app| app.id == *id).cloned())
+            .collect())
     }
 }
 
