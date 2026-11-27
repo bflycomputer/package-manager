@@ -12,7 +12,7 @@ if (!artifact) throw new Error("Cargo did not produce pm-extension-bridge");
 
 rmSync("dist", { recursive: true, force: true });
 await build({
-  entryPoints: ["src/install.tsx"],
+  entryPoints: ["src/install.tsx", "src/uninstall.tsx"],
   bundle: true,
   platform: "node",
   format: "cjs",

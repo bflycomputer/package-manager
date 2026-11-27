@@ -1,71 +1,16 @@
 import { Action, ActionPanel, closeMainWindow, List, PopToRootType } from "@vicinae/api";
-import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
-import { join } from "node:path";
-import { createInterface } from "node:readline";
-import { useEffect, useRef, useState } from "react";
+import { spawn } from "node:child_process";
+import { useRef, useState } from "react";
+import { asset, bridgePath, useSearch } from "./bridge";
 
 type App = { id: number; name: string; icon: string | null };
 type Status = "Installing" | "Installed ✓" | "Failed";
-const bridgePath = join(__dirname, "bin", "pm-extension-bridge");
-const noIcon = join(__dirname, "assets", "no-icon.webp");
+const noIcon = asset("no-icon.webp");
 
 export default function InstallApps() {
-  const [query, setQuery] = useState("");
-  const [apps, setApps] = useState<App[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [failed, setFailed] = useState(false);
+  const { apps, loading, failed, setQuery } = useSearch<App>("catalog");
   const [statuses, setStatuses] = useState<Record<number, Status>>({});
-  const search = useRef<ChildProcessWithoutNullStreams | null>(null);
-  const latestQuery = useRef(query);
   const installing = useRef(new Set<number>());
-  latestQuery.current = query;
-
-  useEffect(() => {
-    let active = true;
-    const child = spawn(bridgePath, ["search"]);
-    search.current = child;
-    const fail = () => {
-      if (!active) return;
-      setApps([]);
-      setFailed(true);
-      setLoading(false);
-    };
-    const lines = createInterface({ input: child.stdout });
-    lines.on("line", (line) => {
-      try {
-        const reply = JSON.parse(line) as { query: string; apps?: App[]; error?: boolean };
-        if (!active || reply.query !== latestQuery.current) return;
-        setApps(reply.apps ?? []);
-        setFailed(Boolean(reply.error));
-        setLoading(false);
-      } catch {
-        fail();
-      }
-    });
-    child.stderr.on("data", (data) => console.error(String(data)));
-    child.on("error", fail);
-    child.on("exit", fail);
-    child.stdin.on("error", fail);
-    return () => {
-      active = false;
-      search.current = null;
-      lines.close();
-      child.kill();
-    };
-  }, []);
-
-  useEffect(() => {
-    const child = search.current;
-    setApps([]);
-    if (!child || child.exitCode !== null || child.stdin.destroyed) {
-      setFailed(true);
-      setLoading(false);
-      return;
-    }
-    setFailed(false);
-    setLoading(true);
-    child.stdin.write(`${JSON.stringify(query)}\n`);
-  }, [query]);
 
   async function install(app: App) {
     if (installing.current.has(app.id) || statuses[app.id] === "Installed ✓") return;
@@ -103,7 +48,7 @@ export default function InstallApps() {
           id={String(app.id)}
           title={app.name}
           icon={app.icon ? { source: app.icon, fallback: noIcon } : noIcon}
-          accessories={[{ text: statuses[app.id] ?? "Install" }]}
+          accessories={[statuses[app.id] ? { text: statuses[app.id] } : { icon: asset("install.svg") }]}
           actions={
             <ActionPanel>
               {!installing.current.has(app.id) && statuses[app.id] !== "Installed ✓" && (
