@@ -4,15 +4,15 @@ use std::sync::mpsc::{self, Receiver};
 use std::thread;
 use std::time::Duration;
 
-use libpm::{App as Package, InstallOutcome, PackageManager};
+use libpm::{App as Package, Catalog, InstallOutcome};
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 use ratatui::{prelude::*, widgets::*, DefaultTerminal};
 
 const RESULT_LIMIT: usize = 5;
 
 struct Model {
-    manager: Option<PackageManager>,
-    manager_rx: Receiver<Result<PackageManager, String>>,
+    manager: Option<Catalog>,
+    manager_rx: Receiver<Result<Catalog, String>>,
     query: String,
     hits: Vec<Package>,
     selected: usize,
@@ -25,7 +25,7 @@ impl Model {
     fn new(query: String) -> Self {
         let (manager_tx, manager_rx) = mpsc::channel();
         thread::spawn(move || {
-            let manager = PackageManager::init().map_err(|error| format!("{error:#}"));
+            let manager = Catalog::load().map_err(|error| format!("{error:#}"));
             let _ = manager_tx.send(manager);
         });
 
