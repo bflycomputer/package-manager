@@ -45209,5 +45209,16 @@
     },
     "traffic": 1609,
     "icon": "559546ce35df85ff"
+  },
+  {
+    "id": 4209,
+    "name": "Google Antigravity CLI",
+    "description": "Run the Antigravity coding agent (agy) in your terminal",
+    "package_source": {
+      "manager": "aur",
+      "package": "antigravity-cli"
+    },
+    "traffic": 10700,
+    "icon": "1a8aa820a220cf61"
   }
 ]
