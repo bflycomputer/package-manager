@@ -31956,8 +31956,8 @@
     "name": "Zotero",
     "description": "Collect, organize and cite research",
     "package_source": {
-      "manager": "pacman",
-      "package": "zotero"
+      "manager": "flatpak",
+      "package": "org.zotero.Zotero"
     },
     "traffic": 6016,
     "icon": "a78894049da27366"
